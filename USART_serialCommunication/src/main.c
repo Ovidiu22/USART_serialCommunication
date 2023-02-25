@@ -1,40 +1,27 @@
-/**
- * \file
- *
- * \brief Empty user application template
- *
- */
+/*******************************/
+/*** Created by Ovidiu Sabau ***/
+/***	25th February 2023	 ***/
+/*******************************/
 
-/**
- * \mainpage User Application template doxygen documentation
- *
- * \par Empty user application template
- *
- * Bare minimum empty user application template
- *
- * \par Content
- *
- * -# Include the ASF header files (through asf.h)
- * -# "Insert system clock initialization code here" comment
- * -# Minimal main function that starts with a call to board_init()
- * -# "Insert application code here" comment
- *
- */
+#define F_CPU 16000000UL
 
-/*
- * Include header files for all drivers that have been imported from
- * Atmel Software Framework (ASF).
- */
-/*
- * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
- */
-#include <asf.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include "USART.h"
+#include <stdio.h>
 
-int main (void)
+int main(void)
 {
-	/* Insert system clock initialization code here (sysclk_init()). */
-
-	board_init();
-
-	/* Insert application code here, after the board has been initialized. */
+	initUSART();	
+	while (1)
+	{
+		sendCharUSART('P');
+		sendCharUSART('U');
+		sendCharUSART('I');
+		sendCharUSART('U');
+		sendCharUSART('C');
+		sendCharUSART('\n');
+		_delay_ms(1000);
+	}
+	return 0;
 }
