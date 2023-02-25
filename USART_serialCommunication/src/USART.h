@@ -7,6 +7,7 @@
 
 #ifndef USART_H_
 #define USART_H_
+	#include <stdio.h>
 
 	#ifndef F_CPU
 	#define F_CPU 16000000UL // Defining the CPU Frequency
@@ -34,7 +35,9 @@
 	#define EIGHT_BIT (3<<UCSZ00)
 	#define DATA_BIT   EIGHT_BIT  // USART Data Bit Selection
 
+	void initUSARTdebug(void);
 	void initUSART(void);
 	void sendCharUSART(uint8_t);
+	int sendCharUSART_printf(char var, FILE *stream);
 
 #endif /* USART_H_ */
