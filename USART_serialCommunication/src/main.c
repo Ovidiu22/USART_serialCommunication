@@ -14,16 +14,16 @@ int main(void)
 	/* Initialization of USART */
 	initUSARTdebug();
 	
-	uint8_t myvalue = 40;
+	uint8_t myvar = 40;
 
 	/* main loop */
-	while(1) {
+	for(uint8_t i = 0; i < 65565; i++) {
 
-		printf("Here is myvalue as an unsigned integer: %d\n", myvalue);
-		printf("Here is myvalue as a char: %c\n", myvalue);
-		printf("Here is myvalue in hex: 0x%X\n", myvalue);
-		printf("Here is myvalue in octal: %o\n", myvalue);
-		printf("End of section.\n");
+		printf("The variable as an unsigned integer: %d\n", myvar);
+		printf("The variable as a char: %c\n", myvar);
+		printf("The variable in hex: 0x%X\n", myvar);
+		printf("The variable in octal: %o\n", myvar);
+		printf("End of iteration %d.\n", i);
 		_delay_ms(2000);
 	}
 

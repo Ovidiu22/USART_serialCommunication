@@ -1,15 +1,16 @@
-/*
- * USART.c
- *
- * Created: 25.02.2023 08:06:32
- *  Author: lenovo
- */ 
+
 
 #include "USART.h"
 
 /* Define a stream for printf function */
 static FILE mystdout = FDEV_SETUP_STREAM(sendCharUSART_printf, NULL, _FDEV_SETUP_WRITE);
 
+/* *****************************************************************
+Name:		initUSARTdebug
+Inputs:		none
+Outputs:	none
+Description:Initializes debugging functionality over USART 
+******************************************************************** */
 void initUSARTdebug()
 {
 	/* setup our stdio stream */
@@ -20,6 +21,12 @@ void initUSARTdebug()
 
 }
 
+/* *****************************************************************
+Name:		initUSART
+Inputs:		none
+Outputs:	none
+Description:Initializes USART communication
+******************************************************************** */
 void initUSART()
 {
 	// Set Baud Rate
@@ -33,12 +40,24 @@ void initUSART()
 	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
 }
 
+/* *****************************************************************
+Name:		sendCharUSART
+Inputs:		data to be transmitted (one byte)
+Outputs:	none
+Description:Sends one byte over USART
+******************************************************************** */
 void sendCharUSART(uint8_t DataByte)
 {
 	while (( UCSR0A & (1<<UDRE0)) == 0) {}; // Do nothing until UDR is ready
 	UDR0 = DataByte;
 }
 
+/* *****************************************************************
+Name:		sendCharUSART_printf
+Inputs:		data to be transmitted ()
+Outputs:	none
+Description:function linked to printf in order to put out the transmitted string
+******************************************************************** */
 int sendCharUSART_printf(char var, FILE *stream)
 {
 	// translate \n to \r for br@y++ terminal
