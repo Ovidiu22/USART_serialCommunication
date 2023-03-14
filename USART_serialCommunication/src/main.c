@@ -14,15 +14,15 @@ int main(void)
 	/* Initialization of USART */
 	initUSARTdebug();
 	
-	uint8_t myvar = 40;
+	uint8_t myvar1 = 40;
+	uint8_t myvar2 = 16;
+	uint8_t myvar3 = 9;
+	
 
 	/* main loop */
 	for(uint8_t i = 0; i < 65565; i++) {
 
-		printf("The variable as an unsigned integer: %d\n", myvar);
-		printf("The variable as a char: %c\n", myvar);
-		printf("The variable in hex: 0x%X\n", myvar);
-		printf("The variable in octal: %o\n", myvar);
+		printf("%u:%u:%u: Cycle start\n", myvar1, myvar2, myvar3);
 		printf("End of iteration %d.\n", i);
 		_delay_ms(2000);
 	}
